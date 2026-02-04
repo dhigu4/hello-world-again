@@ -1,0 +1,238 @@
+/* ─── Reset & Base ─── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0a0e1a;
+    color: #c8cde0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: crosshair;
+}
+
+/* ─── Particle Canvas ─── */
+#particleCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(160deg, #0a0e1a 0%, #111827 50%, #0f1629 100%);
+}
+
+/* ─── Hero ─── */
+.hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.gradient-text {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    letter-spacing: 6px;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa, #f472b6, #a78bfa);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease infinite;
+    filter: drop-shadow(0 0 30px rgba(167, 139, 250, 0.4));
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.subtitle {
+    margin-top: 1.2rem;
+    font-size: 1.25rem;
+    letter-spacing: 3px;
+    color: #7b85a8;
+    min-height: 1.5em;
+}
+
+.cursor {
+    display: inline-block;
+    animation: blink 1s step-end infinite;
+    color: #a78bfa;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+}
+
+.click-hint {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #3d4566;
+    animation: hintPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+}
+
+/* ─── Cards Section ─── */
+.cards-section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #7b85a8;
+    margin-bottom: 3rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2.2rem;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(167, 139, 250, 0.3);
+    box-shadow: 0 12px 40px rgba(167, 139, 250, 0.15);
+}
+
+.card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-size: 1.15rem;
+    color: #e2e4ed;
+    margin-bottom: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #6b7490;
+}
+
+/* ─── Click Counter ─── */
+.counter-section {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.counter-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.counter-label {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #3d4566;
+    margin-bottom: 0.6rem;
+}
+
+.counter-display {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: transform 0.15s ease;
+}
+
+.counter-display.bump {
+    transform: scale(1.3);
+}
+
+/* ─── Click Burst Particles ─── */
+.burst-particle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    animation: burstFly 0.7s ease-out forwards;
+}
+
+@keyframes burstFly {
+    to {
+        transform: translate(var(--dx), var(--dy)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ─── Footer ─── */
+footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem 4rem;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    color: #2e3450;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+footer.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+    .cards { grid-template-columns: 1fr; }
+    .gradient-text { letter-spacing: 2px; }
+}

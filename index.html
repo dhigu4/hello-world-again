@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Full-screen particle canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="gradient-text">Hello World.</h1>
+        <p class="subtitle"><span class="typewriter"></span><span class="cursor">|</span></p>
+        <p class="click-hint">Click anywhere to celebrate</p>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+        <h2 class="section-title">The Beginning</h2>
+        <div class="cards">
+            <div class="card reveal">
+                <div class="card-icon">💻</div>
+                <h3>The First Program</h3>
+                <p>In 1974, Brian Kernighan wrote the first "Hello, World!" program in C — and started a tradition that every developer still follows.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🌐</div>
+                <h3>A Universal Greeting</h3>
+                <p>Across every language, every platform, every framework — "Hello World" is the universal handshake between humans and machines.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🚀</div>
+                <h3>Your Journey Starts Here</h3>
+                <p>Every epic application, every groundbreaking tool, every piece of software you love started with these two simple words.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Counter -->
+    <section class="counter-section reveal">
+        <p class="counter-label">Times you've clicked</p>
+        <div class="counter-display" id="clickCount">0</div>
+    </section>
+
+    <footer class="reveal">
+        <p>Built with curiosity &amp; a little bit of magic.</p>
+    </footer>
+
+    <script src="particles.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
